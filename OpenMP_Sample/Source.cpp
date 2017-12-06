@@ -3,16 +3,12 @@
 #include <omp.h>
 #include <vector>
 #include <random>
-#include <time.h>
 
 #define Matrix 	vector<vector<float>>
 using namespace std;
 
 // The size of Matrix: Degree * Degree matrix
-constexpr int Degree = 2000;
-constexpr int Block = 16;
-constexpr int FLOAT_BYTE = 4;
-constexpr int SET = 32 / FLOAT_BYTE;
+constexpr int Degree = 100;
 
 // @berief : For debug, show Matrix mat
 void printMatrix(Matrix& mat) {
@@ -36,14 +32,13 @@ Matrix GenerateMatrix() {
 
 	std::uniform_real_distribution<float> RandomDistribution(0.0, 1.0);
 
-	Matrix mat(Degree);
+	Matrix mat(Degree, vector<float>(Degree, 0));
 	for (auto& row : mat) {
 		for (int i = 0; i < row.size(); ++i) {
 			row[i] = RandomDistribution(mt);
 		}
 	}
 	return mat;
-
 }
 
 // @berief : Z = X*Y
@@ -60,12 +55,14 @@ void Standard_Mult(Matrix& Z, Matrix& X, Matrix& Y) {
 }
 
 int main() {
-	// SampleƒR[ƒh
+	// Sampleã‚³ãƒ¼ãƒ‰
 	Matrix mat_X = GenerateMatrix();
 	Matrix mat_Y = GenerateMatrix();
+	cout << "init done" << endl;
 
-	Matrix mat(Degree);
+	Matrix mat(Degree, vector<float>(Degree, 0));
 	Standard_Mult(mat, mat_X, mat_Y);
 	printMatrix(mat);
+
+	system("PAUSE");
 }
-///////////////////////////////////////////////////////////
