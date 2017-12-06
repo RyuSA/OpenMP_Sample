@@ -13,13 +13,24 @@ Standard_mult(Z,X,Y) : Z = XYを計算する。高速化はしていない。
 
 ## 例
 // Matrix Xを生成(乱数で初期化)
+
 auto X = GenerateMatrix();
+
+
 // Matrix Yを生成(乱数で初期化)
+
 auto Y = GenerateMatrix();
+
+
 // Matrix Zを生成
+
 Matrix Z(Degree);
+
+
 // Xを表示
+
 printMatrix(X)
+
 
 // Z = XYを実行
 Standard_mult(X,Y,Y);
