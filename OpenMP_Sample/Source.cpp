@@ -3,9 +3,7 @@
 #include <omp.h>
 #include <vector>
 #include <random>
-#include <functional>
 #include <time.h>
-#include <immintrin.h>
 
 #define Matrix 	vector<vector<float>>
 using namespace std;
