@@ -29,18 +29,20 @@ void printMatrix(Matrix& mat) {
 // @berief : fill mat with random float values
 // @input : Matrix mat
 // @output : None
-void GenerateMatrix(Matrix& mat) {
+Matrix GenerateMatrix() {
 	std::random_device rd;
 
 	std::mt19937 mt(rd());
 
 	std::uniform_real_distribution<float> RandomDistribution(0.0, 1.0);
 
+	Matrix mat(Degree);
 	for (auto& row : mat) {
 		for (int i = 0; i < row.size(); ++i) {
 			row[i] = RandomDistribution(mt);
 		}
 	}
+	return mat;
 
 }
 
@@ -57,4 +59,13 @@ void Standard_Mult(Matrix& Z, Matrix& X, Matrix& Y) {
 	}
 }
 
+int main() {
+	// SampleƒR[ƒh
+	Matrix mat_X = GenerateMatrix();
+	Matrix mat_Y = GenerateMatrix();
+
+	Matrix mat(Degree);
+	Standard_Mult(mat, mat_X, mat_Y);
+	printMatrix(mat);
+}
 ///////////////////////////////////////////////////////////
